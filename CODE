@@ -1,0 +1,36 @@
+int switchState = 0; 
+
+void setup() {
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(2, INPUT); // pin 2 is the switch
+
+}
+
+void loop() {
+  switchState = digitalRead(2); 
+  // check pin 2 to read it
+
+  if (switchState == LOW){
+    // the button is not pressed
+
+    digitalWrite(3, HIGH); //Green LED on
+    digitalWrite(4, LOW); //Red LED off
+    digitalWrite(5, LOW); //Red LED off
+  }
+
+ else { // the button is pressed
+  digitalWrite(3, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(5, HIGH);
+
+  delay(250); //wait for a quarter second
+  // toggle the LEDS
+  digitalWrite(4, HIGH);
+  digitalWrite(5, LOW);
+  delay(250); //wait for a quarter second
+
+ }
+
+} // auto go back to begining of loop
